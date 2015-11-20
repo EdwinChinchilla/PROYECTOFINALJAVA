@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="EDITAR PAQUETE"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPaqueteLabel_nombrep}" for="nombrep" />
+                    <h:inputText id="nombrep" value="#{paqueteController.selected.nombrep}" title="#{bundle.EditPaqueteTitle_nombrep}" required="true" requiredMessage="#{bundle.EditPaqueteRequiredMessage_nombrep}"/>
+                    <h:outputLabel value="#{bundle.EditPaqueteLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{paqueteController.selected.descripcion}" title="#{bundle.EditPaqueteTitle_descripcion}" required="true" requiredMessage="#{bundle.EditPaqueteRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="FECHA" for="fechae" />
+                    <h:inputText id="fechae" value="#{paqueteController.selected.fechae}" title="#{bundle.EditPaqueteTitle_fechae}" required="true" requiredMessage="#{bundle.EditPaqueteRequiredMessage_fechae}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPaqueteLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{paqueteController.selected.precio}" title="#{bundle.EditPaqueteTitle_precio}" required="true" requiredMessage="#{bundle.EditPaqueteRequiredMessage_precio}"/>
+                    <h:outputLabel value="#{bundle.EditPaqueteLabel_idpa}" for="idpa" />
+                    <h:inputText id="idpa" value="#{paqueteController.selected.idpa}" title="#{bundle.EditPaqueteTitle_idpa}" required="true" requiredMessage="#{bundle.EditPaqueteRequiredMessage_idpa}"/>
+                </h:panelGrid>
+               <h:commandLink action="#{agenciaController.update}" value="GUARDAR"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="VER"/>
+                <br />
+                <h:commandLink action="#{agenciaController.prepareList}" value="MOSTRAR DATOS DEL PAQUETE" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="RETORNAR AL MENU " />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

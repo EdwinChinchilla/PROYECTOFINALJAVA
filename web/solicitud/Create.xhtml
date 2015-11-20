@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="SOLICITUD"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSolicitudLabel_idsolicitud}" for="idsolicitud" />
+                    <h:inputText id="idsolicitud" value="#{solicitudController.selected.idsolicitud}" title="#{bundle.CreateSolicitudTitle_idsolicitud}" required="true" requiredMessage="#{bundle.CreateSolicitudRequiredMessage_idsolicitud}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitudLabel_fechac}" for="fechac" />
+                    <h:inputText id="fechac" value="#{solicitudController.selected.fechac}" title="#{bundle.CreateSolicitudTitle_fechac}" required="true" requiredMessage="#{bundle.CreateSolicitudRequiredMessage_fechac}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSolicitudLabel_paquetecomp}" for="paquetecomp" />
+                    <h:inputText id="paquetecomp" value="#{solicitudController.selected.paquetecomp}" title="#{bundle.CreateSolicitudTitle_paquetecomp}" required="true" requiredMessage="#{bundle.CreateSolicitudRequiredMessage_paquetecomp}"/>
+                    <h:outputLabel value="#{bundle.CreateSolicitudLabel_vasig}" for="vasig" />
+                    <h:inputText id="vasig" value="#{solicitudController.selected.vasig}" title="#{bundle.CreateSolicitudTitle_vasig}" />
+                    <h:outputLabel value="#{bundle.CreateSolicitudLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{solicitudController.selected.precio}" title="#{bundle.CreateSolicitudTitle_precio}" />
+                </h:panelGrid>
+                <br />
+                 <h:commandLink action="#{agenciaController.create}" value="GUARDAR" />
+                <br />
+                <br />
+                <h:commandLink action="#{agenciaController.prepareList}" value="MOSTRAR DATOS DEL PAQUETE" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Retornar al MENU"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

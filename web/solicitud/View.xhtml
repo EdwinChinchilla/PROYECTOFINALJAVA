@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="VISTA PAQUETE"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSolicitudLabel_idsolicitud}"/>
+                    <h:outputText value="#{solicitudController.selected.idsolicitud}" title="#{bundle.ViewSolicitudTitle_idsolicitud}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudLabel_fechac}"/>
+                    <h:outputText value="#{solicitudController.selected.fechac}" title="#{bundle.ViewSolicitudTitle_fechac}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSolicitudLabel_paquetecomp}"/>
+                    <h:outputText value="#{solicitudController.selected.paquetecomp}" title="#{bundle.ViewSolicitudTitle_paquetecomp}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudLabel_vasig}"/>
+                    <h:outputText value="#{solicitudController.selected.vasig}" title="#{bundle.ViewSolicitudTitle_vasig}"/>
+                    <h:outputText value="#{bundle.ViewSolicitudLabel_precio}"/>
+                    <h:outputText value="#{solicitudController.selected.precio}" title="#{bundle.ViewSolicitudTitle_precio}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{agenciaController.destroyAndView}" value="DESTRUIR DATOS"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="EDITAR"/>
+                <br />
+                <h:commandLink action="#{agenciaController.prepareCreate}" value="CREAR NUEVO EMPLEADO" />
+                <br />
+                <h:commandLink action="#{agenciaController.prepareList}" value="MOSTRAR DATOS DEL EMPLEADO"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="RETORNAR AL MENU"/>
+
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
